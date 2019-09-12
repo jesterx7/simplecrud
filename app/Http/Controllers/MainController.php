@@ -103,7 +103,7 @@ class MainController extends Controller
 		foreach($files as $file) {
 			array_push($list_data, explode(',', Storage::disk('public')->get($file) . "," . str_replace("account/", "", $file)));
 		}
-		return view('CRUD_Data.manage_data', compact('list_data',  'filename'));
+		return view('CRUD_Data.manage_data', compact('list_data'));
 	}
 
 	public function add_data() {
