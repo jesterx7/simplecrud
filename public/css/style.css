@@ -1,0 +1,64 @@
+/* LOGIN SECTION */
+
+#login-box {
+	border-radius: 5px;
+	margin: 10 auto;
+	padding: 10px;
+	width: 500px;
+	position: relative;
+	background-color: #42f5e9;
+}
+
+.user-input {
+	width: 100%;
+}
+
+/* HOME SECTION */
+.list-group > a {
+	font-family: 'Roboto', sans-serif;
+}
+
+.user-feature > p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+}
+
+.feature {
+	color: #3382ff;
+	font-size: 20px;
+}
+
+.mt-4 {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: bold;
+}
+
+.profile-feature {
+	font-size: 25px;
+}
+
+/* ADD DATA SECTION */
+.column {
+  float: left;
+  width: 50%;
+  padding: 15px;
+}
+
+.displayImage {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+}
+
+/* MANAGE DATA SECTION */
+
+.btn-table {
+	display: inline;
+}
+
+.circleImage {
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+}
