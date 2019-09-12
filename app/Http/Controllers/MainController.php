@@ -46,6 +46,39 @@ class MainController extends Controller
 		}
 	}
 
+	public function signup() {
+		return view('signup');
+	}
+
+	public function user_signup(Request $request) {
+		$this->validate($request, [
+			'name' => 'required',
+			'username' => 'required',
+			'email' => 'required',
+			'phone' => 'required',
+			'address' => 'required',
+			'level' => 'nullable',
+			'password' => 'required',
+			'conf_password' => 'required'
+		]);
+
+		if ($request->get('password') != $request->get('conf_password')) {
+			return back()->with('error', 'Password doesnt match, please try again');
+		} else {
+			$user = new User;
+			$user->name = $request->get('name');
+			$user->username = $request->get('username');
+			$user->email = $request->get('email');
+			$user->phone = $request->get('phone');
+			$user->address = $request->get('address');
+			$user->level = $request->get('level');
+			$user->password = $request->get('password');
+			$user->save();
+
+			return redirect('/login')->with('success', 'Sign Up Successfull');
+		}
+	}
+
 	public function index() {
 		if (Session::get('login') == true) {
 			return view('index');

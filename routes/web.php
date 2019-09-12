@@ -16,6 +16,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/', 'MainController@index');
+Route::get('/signup', 'MainController@signup');
 Route::get('/list_data', 'MainController@list_data');
 Route::get('/manage_data', 'MainController@manage_data');
 Route::get('/add_data', 'MainController@add_data');
@@ -29,6 +30,7 @@ Route::get('/delete_account/{user_id}', 'MainController@delete_account');
 Route::get('/logout', 'MainController@logout');
 
 Route::post('/login', 'MainController@user_login');
+Route::post('/signup', 'MainController@user_signup');
 Route::post('/add_data', 'MainController@submit_data');
 Route::post('/edit_data/{data_id}', 'MainController@update_data');
 Route::post('/add_account', 'MainController@submit_account');
