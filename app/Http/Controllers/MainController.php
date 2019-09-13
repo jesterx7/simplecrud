@@ -116,7 +116,7 @@ class MainController extends Controller
 			'email' => 'required',
 			'dob' => 'required',
 			'phone' => 'required',
-			'gender' => 'nullable',
+			'gender' => 'required',
 			'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 		]);
 
