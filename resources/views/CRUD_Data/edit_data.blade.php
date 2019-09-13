@@ -8,7 +8,7 @@
 		{{ csrf_field() }}
 	    <div class="form-group">
 	      <label for="name">Name:</label>
-	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="{{ $data[0] }}" readonly>
+	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="{{ $data[0] }}">
 	    </div>
 	    <div class="form-group">
 	      <label for="email">Email:</label>

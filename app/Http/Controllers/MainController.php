@@ -150,7 +150,11 @@ class MainController extends Controller
 	}
 
 	public function edit_data($data_id) {
-		$data = explode(', ', Storage::disk('public')->get("account/" . $data_id));
+		try {
+			$data = explode(', ', Storage::disk('public')->get("account/" . $data_id));
+		} catch(\Exception $e) {
+			return redirect('/manage_data')->with('error', 'Data not found');
+		}
 
 		return view('CRUD_Data.edit_data', compact('data', 'data_id'));
 	}
@@ -182,22 +186,30 @@ class MainController extends Controller
 				request()->image->storeAs('public/images/', $data['image']);
 			}
 		}
-		Storage::disk('public')->put('account/'. $data_id, implode(", ", $data));
-
+		try {
+			Storage::disk('public')->put('account/'. $data_id, implode(", ", $data));
+		} catch(\Exception $e) {
+			return redirect('/manage_data')->with('error', 'Data not found');
+		}
+		
 		return redirect('/manage_data')->with('success', 'Data Updated Successfully');
 	}
 
 	public function delete_data($data_id) {
-		$data = explode(', ', Storage::disk('public')->get("account/" . $data_id));
-		Storage::disk('public')->delete('images/'.$data[5]);
-		Storage::disk('public')->delete('account/'.$data_id);
+		try {
+			$data = explode(', ', Storage::disk('public')->get("account/" . $data_id));
+			Storage::disk('public')->delete('images/'.$data[5]);
+			Storage::disk('public')->delete('account/'.$data_id);
+		} catch(\Exception $e) {
+			return redirect('/manage_data')->with('error', 'Data not found');
+		}
 		return redirect('manage_data')->with('success', 'Data Deleted Successfully');
 	}
 
 	public function manage_account() {
 		$users = User::all();
 
-		return view('manage_account', compact('users'));
+		return view('CRUD_Account.manage_account', compact('users'));
 	}
 
 	public function add_account() {
@@ -235,7 +247,7 @@ class MainController extends Controller
 
 	public function edit_account($user_id) {
 		$userdata = User::find($user_id);
-
+		
 		return view('CRUD_Account.edit_account', compact('userdata'));
 	}
 
@@ -275,8 +287,8 @@ class MainController extends Controller
 
 	public function delete_account($user_id) {
 		$user = User::find($user_id);
-
 		$user->delete();
+
 		return redirect('/manage_account')->with('success', 'Account Deleted Successfully');
 	}
 
