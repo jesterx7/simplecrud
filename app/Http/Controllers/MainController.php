@@ -65,6 +65,17 @@ class MainController extends Controller
 		if ($request->get('password') != $request->get('conf_password')) {
 			return back()->with('error', 'Password doesnt match, please try again');
 		} else {
+
+			$users = User::all();
+			foreach ($users as $data) {
+				if ($data->username == $request->get('username')) {
+					return redirect('/signup')->with('error', 'Username is already exist');
+				}
+				if ($data->email == $request->get('email')) {
+					return redirect('/signup')->with('error', 'Email is already exist');
+				}
+			}
+			
 			$user = new User;
 			$user->name = $request->get('name');
 			$user->username = $request->get('username');
@@ -247,7 +258,7 @@ class MainController extends Controller
 
 	public function edit_account($user_id) {
 		$userdata = User::find($user_id);
-		
+
 		return view('CRUD_Account.edit_account', compact('userdata'));
 	}
 
