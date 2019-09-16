@@ -6,7 +6,7 @@
 	<h1 class="mt-4">Manage Account</h1>
 	<br>
 	<a class="btn btn-primary" href="/add_account"><i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 15px; color: white;"></i> Add Data</a>
-	<table class="table" style="margin-top: 10px;">
+	<table class="table fixed-table" style="margin-top: 10px;">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Username</th>
@@ -27,8 +27,8 @@
 			      <td>{{ $user->phone }}</td>
 			      <td>{{ $user->address }}</td>
 			      <td>{{ $user->level }}</td>
-			      <td><a href="/edit_account/{{ $user->id }}" class="btn btn-success btn-table">Edit</a>  
-			      <a href="/delete_account/{{ $user->id }}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete ?')">Delete</a></td>
+			      <td><a href="/edit_account/{{ $user->id }}" class="btn btn-success btn-table same-btn-size">Edit</a>  
+			      <a href="/delete_account/{{ $user->id }}" class="btn btn-danger same-btn-size" onclick="return confirm('Are you sure want to delete ?')">Delete</a></td>
 			    </tr>
 			@endforeach
 		</tbody>
